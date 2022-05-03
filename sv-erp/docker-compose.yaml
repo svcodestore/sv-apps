@@ -1,0 +1,18 @@
+version: '3.9'
+services:
+  sv-erp-api:
+    restart: always
+    build:
+      context: ./sv-erp-hyperf
+      dockerfile: Dockerfile
+    ports:
+      - "9501:9501"
+  sv-erp-web:
+    restart: always
+    build:
+      context: ./sv-erp-vben
+      dockerfile: Dockerfile
+    ports:
+      - "3100:3100"
+    volumes:
+      - "./default.conf:/etc/nginx/conf.d/default.conf"
