@@ -9,5 +9,5 @@ ENV GIN_MODE=release
 COPY ./sv-auth-vben/dist/ /usr/share/nginx/html
 COPY default.conf /etc/nginx/conf.d
 
-COPY --from=API /sv-sso-gin/run ./
+COPY --from=API /sv-auth-gin/run ./
 CMD ["sh", "-c", "nginx -c /etc/nginx/nginx.conf && ./http_server & \n ./rpc_server"]
