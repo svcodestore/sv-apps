@@ -1,0 +1,10 @@
+version: '3.9'
+services:
+  sv-resource:
+    restart: always
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "3200:3200"
+      - "7788:7788"
