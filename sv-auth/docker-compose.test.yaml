@@ -1,0 +1,10 @@
+version: '3.9'
+services:
+  sv-auth-api-test:
+    restart: always
+    build:
+      context: ./
+      dockerfile: Dockerfile.test
+    ports:
+      - "7698:7698"
+      - "51078:51078"

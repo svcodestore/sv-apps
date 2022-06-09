@@ -1,0 +1,10 @@
+version: '3.9'
+services:
+  sv-sso-api-test:
+    restart: always
+    build:
+      context: ./
+      dockerfile: Dockerfile.test
+    ports:
+      - "9898:9898"
+      - "51098:51098"

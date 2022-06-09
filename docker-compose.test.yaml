@@ -1,0 +1,47 @@
+version: '3.9'
+services:
+  sv-login-test:
+    restart: always
+    depends_on:
+      - sv-apps-mysql-test
+      - sv-apps-redis-test
+    build:
+      context: ./
+      dockerfile: ./Dockerfile.sv-login.test
+    ports:
+      - "4010:3000"
+  sv-sso-api-test:
+    restart: always
+    depends_on:
+      - sv-apps-mysql-test
+      - sv-apps-redis-test
+    build:
+      context: ./
+      dockerfile: ./Dockerfile.sv-sso.test
+    ports:
+      - "9898:9898"
+      - "51098:51098"
+  sv-auth-api-test:
+    restart: always
+    depends_on:
+      - sv-apps-mysql-test
+      - sv-apps-redis-test
+    build:
+      context: ./
+      dockerfile: ./Dockerfile.sv-auth.test
+    ports:
+      - "7698:7698"
+      - "51078:51078"
+  sv-apps-mysql-test:
+    image: mysql:8.0.24
+    restart: always
+    environment:
+      TZ: Asia/Shanghai
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "4316:3306"
+  sv-apps-redis-test:
+    image: redis:6.0.5
+    restart: always
+    ports:
+      - "7389:6379"
