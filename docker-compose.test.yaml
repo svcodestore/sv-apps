@@ -35,6 +35,8 @@ services:
   sv-apps-mysql-test:
     image: mysql:8.0.24
     restart: always
+    volumes:
+      - "../mysql-test-data:/var/lib/mysql"
     environment:
       TZ: Asia/Shanghai
       MYSQL_ROOT_PASSWORD: root
